@@ -79,7 +79,7 @@ client.on('messageCreate', async (message) => {
 module.exports = async (req, res) => {
     if (req.method === 'POST') {
         // Trigger bot interaction here, since Vercel is stateless, we don't keep it running as usual
-        await client.login('MTM1MjI2Mzc4NDQ3OTMyNjIzOA.GjN1_i.meGucTo4TzKpM9I0qEUS2WV0NLn98lKZINLtYY'); // Replace with your bot token
+        await client.login('MTM1MjI2Mzc4NDQ3OTMyNjIzOA.GNvtMM.8gJrKuEJUJF6UT4q3DSYeRyqmUc8GeBFh3EAO8'); // Replace with your bot token
         res.status(200).send('Bot is online');
     } else {
         res.status(405).send('Method Not Allowed');
