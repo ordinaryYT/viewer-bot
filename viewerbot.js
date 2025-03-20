@@ -6,7 +6,7 @@ const client = new Client({
 });
 
 const PREFIX = '!'; // Command prefix
-const APPROVED_USERS = ['YOUR_USER_ID']; // Replace with your Discord user ID
+const APPROVED_USERS = ['1239486833079881850']; // Replace with your Discord user ID
 const ADMIN_CHANNEL = 'channel-approval'; // The channel where you'll approve requests
 
 client.once('ready', () => {
@@ -79,7 +79,7 @@ client.on('messageCreate', async (message) => {
 module.exports = async (req, res) => {
     if (req.method === 'POST') {
         // Trigger bot interaction here, since Vercel is stateless, we don't keep it running as usual
-        await client.login('YOUR_BOT_TOKEN'); // Replace with your bot token
+        await client.login('MTM1MjI2Mzc4NDQ3OTMyNjIzOA.GjN1_i.meGucTo4TzKpM9I0qEUS2WV0NLn98lKZINLtYY'); // Replace with your bot token
         res.status(200).send('Bot is online');
     } else {
         res.status(405).send('Method Not Allowed');
