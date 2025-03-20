@@ -1,16 +1,19 @@
+// api/bot.js
+
 const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const client = new Client({
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+});
 
 const PREFIX = '!'; // Command prefix
 const APPROVED_USERS = ['YOUR_USER_ID']; // Replace with your Discord user ID
 const ADMIN_CHANNEL = 'channel-approval'; // The channel where you'll approve requests
 
-// When the bot is ready, it will log a message to the console
 client.once('ready', () => {
     console.log('Bot is online and ready!');
 });
 
-// Listen for messages
+// Bot event to handle messages
 client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
 
@@ -72,5 +75,13 @@ client.on('messageCreate', async (message) => {
     }
 });
 
-// Log in to Discord with the app's token
-client.login('YOUR_BOT_TOKEN');
+// This is for Vercel to start the bot.
+module.exports = async (req, res) => {
+    if (req.method === 'POST') {
+        // Trigger bot interaction here, since Vercel is stateless, we don't keep it running as usual
+        await client.login('YOUR_BOT_TOKEN'); // Replace with your bot token
+        res.status(200).send('Bot is online');
+    } else {
+        res.status(405).send('Method Not Allowed');
+    }
+};
